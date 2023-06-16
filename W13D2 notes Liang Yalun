@@ -1,0 +1,12 @@
+Ideas in Android architecture
+
+- Java VM: Dalvik / ART
+- Init system: zygote
+  Linux startup process: pid 0 (kernel space) starts init (user space) process, and init starts other userspace processes.
+  zygote is the init process for Java processes; all IPC are controlled by zygote, and all Java processes are directly started by zygote (no startup by other processes).
+- Binder: IPC
+  Uses a kernel module to perform IPC
+- Parcel: serializer/deserializer
+- Android Interface Design Language / AIDL
+  Provides transparent RPC
+- Wake locks

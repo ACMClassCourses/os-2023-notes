@@ -1,0 +1,34 @@
+I/O
+
+Question 1. How to drive an I/O device?
+Question 2. How to perform read/write?
+
+Complexity:
+1. DMA, interrupts, etc.
+2. different types of devices
+
+A division:
+- block devices
+  - information is in fixed-sized blocks
+  - addressable, seekable
+  - random access
+- character devices
+  - information is in a stream of characters, no block structures
+  - not addressable nor seekable
+  - sequential access
+
+The USB could be treated as a network in a tree structure, with hubs as root
+and intermediate nodes, and devices as leaves.
+
+Direct Memory Access (DMA) controller: remembers address, count and control of
+a task; DMA requests device to transfer data directly to memory. When the
+transfer is completed the device acks to the DMA, then the DMA sends an
+interrupt to the CPU. This is called the on-fly mode of operation.
+
+Alternatively DMA could also read data from device, then write to memory; the
+write request and data are both sent by the DMA.
+
+Zero-copy: data should not be copied when processing.
+
+DMA controllers and interrupt controllers are limited resources; the CPU needs
+to manage their allocation.
